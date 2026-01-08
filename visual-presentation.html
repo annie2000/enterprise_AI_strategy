@@ -1,0 +1,2317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Enterprise AI Platforms Beat DIY - Executive Presentation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            padding: 60px 80px;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .slide.active {
+            display: flex;
+            opacity: 1;
+            animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Slide 1: Title */
+        .slide-1 {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-1::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .slide-1 .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-1 .icon {
+            font-size: 100px;
+            margin-bottom: 40px;
+            animation: float 4s ease-in-out infinite;
+            filter: drop-shadow(0 10px 30px rgba(59, 130, 246, 0.5));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .slide-1 h1 {
+            font-size: 68px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.4);
+            letter-spacing: -1px;
+        }
+
+        .slide-1 .subtitle {
+            font-size: 32px;
+            font-weight: 300;
+            opacity: 0.95;
+            max-width: 1000px;
+        }
+
+        /* Slide 2: Executive Summary */
+        .slide-2 {
+            background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-2 h2 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .exec-summary {
+            display: grid;
+            gap: 30px;
+            max-width: 1400px;
+        }
+
+        .summary-item {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #3b82f6;
+            padding: 30px 40px;
+            border-radius: 12px;
+            font-size: 24px;
+            line-height: 1.6;
+            animation: fadeInLeft 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .summary-item:nth-child(1) { animation-delay: 0.2s; }
+        .summary-item:nth-child(2) { animation-delay: 0.4s; }
+        .summary-item:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Slide 3: Real Enterprise Approaches */
+        .slide-3 {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-3 h2 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .slide-3 .tagline {
+            font-size: 28px;
+            opacity: 0.8;
+            margin-bottom: 50px;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .approach-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.1) 100%);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 24px;
+            padding: 45px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: scaleIn 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .approach-card:nth-child(1) { animation-delay: 0.2s; }
+        .approach-card:nth-child(2) { animation-delay: 0.5s; }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .approach-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.6);
+        }
+
+        .approach-label {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.3);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .approach-title {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: #60a5fa;
+        }
+
+        .approach-desc {
+            font-size: 20px;
+            line-height: 1.7;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+
+        .approach-examples {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+            font-size: 18px;
+            color: #93c5fd;
+        }
+
+        .approach-examples strong {
+            color: #60a5fa;
+        }
+
+        /* Slide 4: Investment Stats */
+        .slide-4 {
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-4 h2 {
+            font-size: 56px;
+            margin-bottom: 50px;
+        }
+
+        .stats-showcase {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 24px;
+            padding: 50px;
+            animation: fadeInUp 0.7s ease forwards;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:nth-child(1) { animation-delay: 0.2s; }
+        .stat-box:nth-child(2) { animation-delay: 0.4s; }
+        .stat-box:nth-child(3) { animation-delay: 0.6s; }
+        .stat-box:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stat-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 30px 60px rgba(16, 185, 129, 0.3);
+        }
+
+        .stat-number {
+            font-size: 72px;
+            font-weight: 900;
+            color: #10b981;
+            margin-bottom: 15px;
+            text-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+        }
+
+        .stat-label {
+            font-size: 22px;
+            line-height: 1.5;
+            opacity: 0.95;
+        }
+
+        .stat-context {
+            margin-top: 15px;
+            font-size: 16px;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        /* Slide 5: The Question */
+        .slide-5 {
+            background: linear-gradient(135deg, #7c2d12 0%, #ea580c 100%);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .slide-5 h2 {
+            font-size: 48px;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        .question-container {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(30px);
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 30px;
+            padding: 60px 80px;
+            max-width: 1300px;
+            position: relative;
+            animation: glow 3s ease infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 40px rgba(234, 88, 12, 0.4); }
+            50% { box-shadow: 0 0 60px rgba(234, 88, 12, 0.6); }
+        }
+
+        .question-text {
+            font-size: 38px;
+            font-weight: 700;
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .sub-questions {
+            display: grid;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .sub-q {
+            font-size: 24px;
+            opacity: 0.9;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+        }
+
+        /* Slide 6: Hype Cycle */
+        .slide-6 {
+            background: linear-gradient(135deg, #450a0a 0%, #991b1b 100%);
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-6 h2 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .slide-6 h3 {
+            font-size: 36px;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-bottom: 50px;
+        }
+
+        .hype-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hype-visual {
+            background: rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hype-curve {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .curve-point {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            animation: slideInRight 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .curve-point:nth-child(1) { animation-delay: 0.3s; }
+        .curve-point:nth-child(2) { animation-delay: 0.6s; }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .curve-icon {
+            font-size: 48px;
+            width: 80px;
+        }
+
+        .curve-text {
+            flex: 1;
+        }
+
+        .curve-stage {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .curve-year {
+            font-size: 18px;
+            opacity: 0.8;
+        }
+
+        .hype-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .stat-highlight {
+            background: rgba(255,255,255,0.15);
+            border-left: 5px solid #ef4444;
+            padding: 30px;
+            border-radius: 16px;
+            animation: fadeIn 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .stat-highlight:nth-child(1) { animation-delay: 0.4s; }
+        .stat-highlight:nth-child(2) { animation-delay: 0.7s; }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .stat-highlight .number {
+            font-size: 52px;
+            font-weight: 900;
+            color: #fca5a5;
+            margin-bottom: 10px;
+        }
+
+        .stat-highlight .label {
+            font-size: 20px;
+            line-height: 1.5;
+        }
+
+        /* Slide 7: DIY Fallacy */
+        .slide-7 {
+            background: linear-gradient(135deg, #831843 0%, #be185d 100%);
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-7 h2 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .slide-7 h3 {
+            font-size: 32px;
+            opacity: 0.9;
+            margin-bottom: 50px;
+        }
+
+        .fallacy-explanation {
+            background: rgba(255,255,255,0.12);
+            border-radius: 24px;
+            padding: 50px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+            max-width: 1400px;
+            animation: expandIn 0.8s ease forwards;
+        }
+
+        @keyframes expandIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .fallacy-text {
+            font-size: 26px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .fallacy-highlight {
+            font-weight: 700;
+            color: #fda4af;
+        }
+
+        /* Slide 8: Platform Value */
+        .slide-8 {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .platform-badge {
+            display: inline-block;
+            background: #fff;
+            color: #1e40af;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+        }
+
+        .slide-8 h2 {
+            font-size: 64px;
+            margin-bottom: 50px;
+            font-weight: 900;
+        }
+
+        .platform-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .comparison-side {
+            background: rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 50px;
+            border: 2px solid rgba(255,255,255,0.2);
+            animation: fadeInScale 0.7s ease forwards;
+            opacity: 0;
+        }
+
+        .comparison-side:nth-child(1) { animation-delay: 0.3s; }
+        .comparison-side:nth-child(2) { animation-delay: 0.6s; }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .comparison-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #93c5fd;
+        }
+
+        .comparison-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .comparison-item {
+            font-size: 20px;
+            padding: 15px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            line-height: 1.5;
+        }
+
+        .comparison-item.highlight {
+            background: rgba(96, 165, 250, 0.25);
+            border-left: 4px solid #60a5fa;
+            font-weight: 600;
+        }
+
+        /* Slide 9: AGI Requirements */
+        .slide-9 {
+            background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%);
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-9 h2 {
+            font-size: 56px;
+            margin-bottom: 50px;
+            font-weight: 800;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .req-card {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 45px;
+            animation: popIn 0.5s ease forwards;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .req-card:nth-child(1) { animation-delay: 0.2s; }
+        .req-card:nth-child(2) { animation-delay: 0.4s; }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .req-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: scale(1.03);
+        }
+
+        .req-icon {
+            font-size: 56px;
+            margin-bottom: 25px;
+        }
+
+        .req-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #c4b5fd;
+        }
+
+        .req-desc {
+            font-size: 20px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Slide 10: Venezuela Example */
+        .slide-10 {
+            background: linear-gradient(135deg, #0c4a6e 0%, #075985 100%);
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-10 h2 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .slide-10 h3 {
+            font-size: 32px;
+            margin-bottom: 50px;
+            opacity: 0.9;
+        }
+
+        .example-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .timeline {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 40px;
+            border-left: 5px solid #38bdf8;
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            animation: slideInLeft 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.6s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.9s; }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .timeline-time {
+            font-size: 18px;
+            color: #7dd3fc;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .timeline-event {
+            font-size: 22px;
+            line-height: 1.5;
+        }
+
+        .insight-box {
+            background: rgba(56, 189, 248, 0.2);
+            border: 2px solid #38bdf8;
+            border-radius: 20px;
+            padding: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .insight-label {
+            font-size: 20px;
+            color: #7dd3fc;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .insight-text {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        /* Slide 11: Infrastructure Pipeline */
+        .slide-11 {
+            background: linear-gradient(135deg, #7c2d12 0%, #c2410c 100%);
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .complexity-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            animation: pulse 2s ease infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.02); }
+        }
+
+        .slide-11 h2 {
+            font-size: 60px;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .slide-11 h3 {
+            font-size: 28px;
+            opacity: 0.9;
+            margin-bottom: 45px;
+        }
+
+        .infra-pipeline {
+            display: grid;
+            gap: 20px;
+        }
+
+        .pipeline-stage {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.15);
+            border-radius: 16px;
+            padding: 25px 35px;
+            animation: slideInRight 0.5s ease forwards;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .pipeline-stage:nth-child(1) { animation-delay: 0.2s; }
+        .pipeline-stage:nth-child(2) { animation-delay: 0.4s; }
+        .pipeline-stage:nth-child(3) { animation-delay: 0.6s; }
+        .pipeline-stage:nth-child(4) { animation-delay: 0.8s; }
+        .pipeline-stage:nth-child(5) { animation-delay: 1.0s; }
+        .pipeline-stage:nth-child(6) { animation-delay: 1.2s; }
+        .pipeline-stage:nth-child(7) { animation-delay: 1.4s; }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .pipeline-stage:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateX(15px);
+        }
+
+        .pipeline-number {
+            font-size: 40px;
+            font-weight: 900;
+            color: #fb923c;
+            margin-right: 30px;
+            min-width: 60px;
+        }
+
+        .pipeline-content {
+            flex: 1;
+        }
+
+        .pipeline-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .pipeline-desc {
+            font-size: 18px;
+            opacity: 0.85;
+            line-height: 1.4;
+        }
+
+        /* Slide 12: Cost Breakdown */
+        .slide-12 {
+            background: linear-gradient(135deg, #991b1b 0%, #dc2626 100%);
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .emphasis-banner {
+            display: inline-block;
+            background: #fff;
+            color: #dc2626;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 22px;
+            font-weight: 900;
+            margin-bottom: 35px;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 40px rgba(220, 38, 38, 0.4);
+            animation: bounce 1.5s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .slide-12 h2 {
+            font-size: 68px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        }
+
+        .cost-breakdown {
+            display: grid;
+            gap: 25px;
+        }
+
+        .cost-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.12);
+            padding: 35px 45px;
+            border-radius: 20px;
+            animation: expandWidth 0.6s ease forwards;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .cost-row:nth-child(1) { animation-delay: 0.2s; }
+        .cost-row:nth-child(2) { animation-delay: 0.4s; }
+        .cost-row:nth-child(3) { animation-delay: 0.6s; }
+        .cost-row:nth-child(4) { animation-delay: 0.8s; }
+        .cost-row:nth-child(5) { animation-delay: 1.0s; }
+
+        @keyframes expandWidth {
+            from {
+                opacity: 0;
+                transform: scaleX(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scaleX(1);
+            }
+        }
+
+        .cost-row.major {
+            background: rgba(255,255,255,0.25);
+            border: 3px solid rgba(255,255,255,0.4);
+            transform: scale(1.02);
+        }
+
+        .cost-row:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(15px);
+        }
+
+        .cost-item-label {
+            font-size: 26px;
+            font-weight: 600;
+        }
+
+        .cost-item-value {
+            font-size: 48px;
+            font-weight: 900;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .cost-row.major .cost-item-value {
+            font-size: 56px;
+            color: #fca5a5;
+        }
+
+        /* Slide 13: The Choice */
+        .slide-13 {
+            background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 100%);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide-13 h2 {
+            font-size: 56px;
+            margin-bottom: 60px;
+            text-align: center;
+            font-weight: 800;
+        }
+
+        .choice-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 50px;
+            align-items: stretch;
+            max-width: 1600px;
+        }
+
+        .choice-option {
+            background: rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+            animation: fadeInScale 0.7s ease forwards;
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .choice-option:nth-child(1) { 
+            animation-delay: 0.3s; 
+            border-color: rgba(239, 68, 68, 0.5);
+        }
+
+        .choice-option:nth-child(3) { 
+            animation-delay: 0.6s;
+            border-color: rgba(34, 197, 94, 0.5);
+        }
+
+        .choice-option:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(167, 139, 250, 0.4);
+        }
+
+        .choice-icon {
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+
+        .choice-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: #c4b5fd;
+        }
+
+        .choice-desc {
+            font-size: 20px;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 25px;
+            flex: 1;
+        }
+
+        .choice-result {
+            font-size: 18px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            margin-top: 25px;
+            font-style: italic;
+        }
+
+        .vs-divider {
+            font-size: 72px;
+            font-weight: 900;
+            color: #a78bfa;
+            animation: fadeIn 0.8s ease 0.5s forwards;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Slide 14: Platform Examples */
+        .slide-14 {
+            background: linear-gradient(135deg, #0e7490 0%, #0891b2 100%);
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .key-slide-indicator {
+            display: inline-block;
+            background: #fff;
+            color: #0891b2;
+            padding: 20px 45px;
+            border-radius: 50px;
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 40px;
+            letter-spacing: 3px;
+            box-shadow: 0 15px 50px rgba(8, 145, 178, 0.4);
+            animation: bounce 1.2s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .slide-14 h2 {
+            font-size: 64px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .slide-14 h3 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+
+        .platform-tiers {
+            display: grid;
+            gap: 35px;
+        }
+
+        .tier-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(20px);
+            border-left: 8px solid #22d3ee;
+            border-radius: 24px;
+            padding: 45px 55px;
+            animation: slideInLeft 0.7s ease forwards;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .tier-card:nth-child(1) { animation-delay: 0.3s; }
+        .tier-card:nth-child(2) { animation-delay: 0.6s; }
+        .tier-card:nth-child(3) { animation-delay: 0.9s; }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .tier-card:hover {
+            transform: translateX(20px) scale(1.02);
+            box-shadow: 0 25px 70px rgba(34, 211, 238, 0.3);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .tier-label {
+            display: inline-block;
+            background: rgba(34, 211, 238, 0.3);
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .tier-company {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #22d3ee;
+        }
+
+        .tier-approach {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #a5f3fc;
+        }
+
+        .tier-details {
+            font-size: 20px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        .tier-value {
+            margin-top: 25px;
+            padding: 25px;
+            background: rgba(34, 211, 238, 0.2);
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .tier-value::before {
+            content: "💡 ";
+            font-size: 24px;
+        }
+
+        /* Slide 15: ServiceNow Value */
+        .slide-15 {
+            background: linear-gradient(135deg, #14532d 0%, #15803d 100%);
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .servicenow-badge {
+            display: inline-block;
+            background: #10b981;
+            color: #fff;
+            padding: 20px 45px;
+            border-radius: 50px;
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            box-shadow: 0 15px 50px rgba(16, 185, 129, 0.5);
+            animation: glow 2s ease infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 15px 50px rgba(16, 185, 129, 0.5); }
+            50% { box-shadow: 0 15px 70px rgba(16, 185, 129, 0.8); }
+        }
+
+        .slide-15 h2 {
+            font-size: 64px;
+            font-weight: 900;
+            margin-bottom: 50px;
+        }
+
+        .value-props {
+            display: grid;
+            gap: 30px;
+        }
+
+        .value-prop {
+            background: rgba(255,255,255,0.12);
+            border-left: 6px solid #10b981;
+            border-radius: 20px;
+            padding: 40px 50px;
+            animation: expandIn 0.6s ease forwards;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .value-prop:nth-child(1) { animation-delay: 0.3s; }
+        .value-prop:nth-child(2) { animation-delay: 0.6s; }
+        .value-prop:nth-child(3) { animation-delay: 0.9s; }
+        .value-prop:nth-child(4) { animation-delay: 1.2s; }
+
+        .value-prop:hover {
+            background: rgba(255,255,255,0.18);
+            transform: translateX(15px);
+        }
+
+        .value-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: #6ee7b7;
+        }
+
+        .value-desc {
+            font-size: 22px;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        /* Slide 16: The Pattern */
+        .slide-16 {
+            background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide-16 h2 {
+            font-size: 64px;
+            margin-bottom: 60px;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        .pattern-reveal {
+            max-width: 1400px;
+        }
+
+        .pattern-points {
+            display: grid;
+            gap: 35px;
+            margin-bottom: 50px;
+        }
+
+        .pattern-point {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 35px 45px;
+            animation: revealPoint 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .pattern-point:nth-child(1) { animation-delay: 0.3s; }
+        .pattern-point:nth-child(2) { animation-delay: 0.6s; }
+        .pattern-point:nth-child(3) { animation-delay: 0.9s; }
+
+        @keyframes revealPoint {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .pattern-check {
+            font-size: 48px;
+            color: #10b981;
+            min-width: 60px;
+        }
+
+        .pattern-text {
+            font-size: 26px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .pattern-conclusion {
+            background: rgba(16, 185, 129, 0.25);
+            border: 3px solid #10b981;
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            animation: fadeIn 0.8s ease 1.5s forwards;
+            opacity: 0;
+        }
+
+        .pattern-conclusion p {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.6;
+        }
+
+        /* Slide 17: The Irony */
+        .slide-17 {
+            background: linear-gradient(135deg, #4c0519 0%, #881337 100%);
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-17 h2 {
+            font-size: 64px;
+            margin-bottom: 50px;
+            font-weight: 900;
+        }
+
+        .irony-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 40px;
+            align-items: center;
+            max-width: 1500px;
+        }
+
+        .irony-side {
+            background: rgba(255,255,255,0.12);
+            border-radius: 24px;
+            padding: 50px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .irony-side h3 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #fda4af;
+        }
+
+        .irony-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .irony-item {
+            font-size: 20px;
+            padding: 15px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            line-height: 1.5;
+        }
+
+        .arrow-divider {
+            font-size: 80px;
+            color: #fda4af;
+            animation: slideHorizontal 1.5s ease infinite;
+        }
+
+        @keyframes slideHorizontal {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(15px); }
+        }
+
+        /* Slide 18: The Real Question */
+        .slide-18 {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .slide-18 h2 {
+            font-size: 56px;
+            margin-bottom: 50px;
+            font-weight: 800;
+        }
+
+        .question-not {
+            font-size: 36px;
+            color: #c4b5fd;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .question-but {
+            font-size: 80px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #c4b5fd 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 40px 0;
+            animation: scaleEmphasis 2s ease infinite;
+            line-height: 1.3;
+        }
+
+        @keyframes scaleEmphasis {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cost-context {
+            background: rgba(196, 181, 253, 0.2);
+            border: 2px solid #a78bfa;
+            border-radius: 24px;
+            padding: 40px 60px;
+            max-width: 1100px;
+            margin-top: 50px;
+        }
+
+        .cost-context p {
+            font-size: 24px;
+            line-height: 1.7;
+        }
+
+        /* Slide 19: Industry Direction */
+        .slide-19 {
+            background: linear-gradient(135deg, #14532d 0%, #166534 100%);
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-19 h2 {
+            font-size: 56px;
+            margin-bottom: 50px;
+            font-weight: 800;
+        }
+
+        .direction-content {
+            display: grid;
+            gap: 40px;
+            max-width: 1400px;
+        }
+
+        .direction-item {
+            background: rgba(255,255,255,0.12);
+            border-radius: 24px;
+            padding: 45px;
+            border: 2px solid rgba(255,255,255,0.2);
+            animation: fadeInUp 0.7s ease forwards;
+            opacity: 0;
+        }
+
+        .direction-item:nth-child(1) { animation-delay: 0.3s; }
+        .direction-item:nth-child(2) { animation-delay: 0.6s; }
+
+        .direction-icon {
+            font-size: 56px;
+            margin-bottom: 25px;
+        }
+
+        .direction-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #86efac;
+        }
+
+        .direction-desc {
+            font-size: 22px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Slide 20: Final Recommendation */
+        .slide-20 {
+            background: linear-gradient(135deg, #a855f7 0%, #c026d3 50%, #d946ef 100%);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .slide-20 h2 {
+            font-size: 64px;
+            margin-bottom: 60px;
+            font-weight: 900;
+        }
+
+        .final-message {
+            max-width: 1200px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(30px);
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 30px;
+            padding: 60px 70px;
+            animation: pulse 3s ease infinite;
+        }
+
+        .final-message p {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .final-cta {
+            font-size: 28px;
+            opacity: 0.9;
+            font-style: italic;
+            margin-top: 40px;
+        }
+
+        /* Controls */
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+            background: rgba(0,0,0,0.7);
+            padding: 15px 25px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .control-btn {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 12px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .control-btn:hover {
+            background: rgba(255,255,255,0.25);
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255,255,255,0.2);
+        }
+
+        .control-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .slide-indicator {
+            position: fixed;
+            top: 30px;
+            right: 40px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            z-index: 1000;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+            transition: width 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+        }
+
+        .time-display {
+            position: fixed;
+            top: 30px;
+            left: 40px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            z-index: 1000;
+            border: 2px solid rgba(255,255,255,0.2);
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Title -->
+        <div class="slide slide-1 active">
+            <div class="content">
+                <div class="icon">🎯</div>
+                <h1>Why Enterprise AI Platforms Beat DIY:<br>The $37B Reality Check</h1>
+                <p class="subtitle">Why Companies Choose ServiceNow Over Building Direct Foundation Model Connections</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Executive Summary -->
+        <div class="slide slide-2">
+            <h2>Executive Summary</h2>
+            <div class="exec-summary">
+                <div class="summary-item">
+                    <strong>Market Reality:</strong> Enterprises spent $37B on AI in 2025 (3.2x growth), but critically—they're choosing platforms with built-in governance over DIY foundation model connections.
+                </div>
+                <div class="summary-item">
+                    <strong>The Misguided Approach:</strong> "Why use ServiceNow or enterprise platforms? Let's just connect directly to OpenAI/Anthropic APIs and build everything ourselves."
+                </div>
+                <div class="summary-item">
+                    <strong>Key Finding:</strong> Companies attempting DIY approaches end up recreating what platforms like ServiceNow already provide—but at 10x the cost without the governance, security, or ecosystem benefits.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Enterprise Approaches -->
+        <div class="slide slide-3">
+            <h2>How Enterprises Actually Deploy AI</h2>
+            <p class="tagline">Two Proven Approaches vs. The Failing DIY Method</p>
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <span class="approach-label">For Most Enterprises</span>
+                    <div class="approach-title">Enterprise AI Platforms</div>
+                    <div class="approach-desc">
+                        Solutions like ServiceNow provide pre-built governance, security, integrations, and AI workflows. Deploy quickly without building infrastructure.
+                    </div>
+                    <div class="approach-examples">
+                        <strong>Example:</strong> ServiceNow AI Platform with enterprise controls
+                    </div>
+                </div>
+                <div class="approach-card">
+                    <span class="approach-label">For Large Enterprises</span>
+                    <div class="approach-title">Strategic Partnerships</div>
+                    <div class="approach-desc">
+                        Deep co-development with foundation model providers. Disney invested $1B for custom governance frameworks and organization-wide deployment.
+                    </div>
+                    <div class="approach-examples">
+                        <strong>Examples:</strong> Disney-OpenAI ($1B), Accenture-Anthropic (30K trained), Novo Nordisk-Anthropic
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Investment Stats -->
+        <div class="slide slide-4">
+            <h2>💰 The Investment Reality</h2>
+            <div class="stats-showcase">
+                <div class="stat-box">
+                    <div class="stat-number">$37B</div>
+                    <div class="stat-label">Total Gen AI Spend 2025</div>
+                    <div class="stat-context">NOT going to DIY—going to platforms & partnerships</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$19B</div>
+                    <div class="stat-label">Application Layer</div>
+                    <div class="stat-context">Companies buying solutions, not building from scratch</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$1B</div>
+                    <div class="stat-label">Disney-OpenAI Investment</div>
+                    <div class="stat-context">Equity stake + major customer deploying with governance controls</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">40%</div>
+                    <div class="stat-label">Anthropic Enterprise Market Share</div>
+                    <div class="stat-context">Up from 12% in 2023—platforms winning</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: The Misguided Question -->
+        <div class="slide slide-5">
+            <h2>The Question That Misses the Point</h2>
+            <div class="question-container">
+                <p class="question-text">"Why use enterprise platforms like ServiceNow? Can't we just connect directly to OpenAI or Anthropic APIs?"</p>
+                <div class="sub-questions">
+                    <div class="sub-q">"Let's skip the platform layer and build it ourselves"</div>
+                    <div class="sub-q">"We'll fine-tune foundation models with our data directly"</div>
+                    <div class="sub-q">"This will save costs and give us more control"</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Hype Cycle -->
+        <div class="slide slide-6">
+            <h2>⚠️ Why This Thinking Is Flawed #1</h2>
+            <h3>The AGI Optimism Trap</h3>
+            <div class="hype-content">
+                <div class="hype-visual">
+                    <div class="hype-curve">
+                        <div class="curve-point">
+                            <div class="curve-icon">📈</div>
+                            <div class="curve-text">
+                                <div class="curve-stage">Peak of Inflated Expectations</div>
+                                <div class="curve-year">2024 - "AGI will solve everything!"</div>
+                            </div>
+                        </div>
+                        <div class="curve-point">
+                            <div class="curve-icon">📉</div>
+                            <div class="curve-text">
+                                <div class="curve-stage">Trough of Disillusionment</div>
+                                <div class="curve-year">2025 - Reality hits hard</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hype-stats">
+                    <div class="stat-highlight">
+                        <div class="number"><30%</div>
+                        <div class="label">of CEOs satisfied with AI ROI despite $1.9M average spend</div>
+                    </div>
+                    <div class="stat-highlight">
+                        <div class="number">95%</div>
+                        <div class="label">of DIY AI pilots fail to deliver measurable business impact (MIT)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: DIY Fallacy -->
+        <div class="slide slide-7">
+            <h2>⚠️ Why This Thinking Is Flawed #2</h2>
+            <h3>The "We'll Build It Ourselves" Fallacy</h3>
+            <div class="fallacy-explanation">
+                <p class="fallacy-text">
+                    The assumption: <span class="fallacy-highlight">"Connecting directly to OpenAI/Anthropic APIs and building our own infrastructure is simpler and cheaper than using platforms like ServiceNow."</span>
+                </p>
+                <p class="fallacy-text">
+                    The pitch: "We'll fine-tune foundation models with our data, build our own integrations, and avoid paying for enterprise platforms."
+                </p>
+                <p class="fallacy-text" style="margin-top: 40px; font-size: 32px; font-weight: 700; color: #fda4af;">
+                    But here's what actually happens when companies try this...
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 8: What Platforms Solve -->
+        <div class="slide slide-8">
+            <span class="platform-badge">🏆 PLATFORM VALUE</span>
+            <h2>What ServiceNow-Type Platforms Actually Solve</h2>
+            <div class="platform-comparison">
+                <div class="comparison-side">
+                    <div class="comparison-title">❌ DIY "Direct Connection"</div>
+                    <div class="comparison-list">
+                        <div class="comparison-item">Build data pipelines from scratch</div>
+                        <div class="comparison-item">Create security infrastructure</div>
+                        <div class="comparison-item">Develop governance frameworks</div>
+                        <div class="comparison-item">Build integration layers</div>
+                        <div class="comparison-item">Handle model updates manually</div>
+                        <div class="comparison-item">Manage compliance yourself</div>
+                        <div class="comparison-item highlight">Result: 18-24 months, $millions, high failure rate</div>
+                    </div>
+                </div>
+                <div class="comparison-side">
+                    <div class="comparison-title">✅ ServiceNow Platform</div>
+                    <div class="comparison-list">
+                        <div class="comparison-item">✓ Pre-built governance frameworks</div>
+                        <div class="comparison-item">✓ Enterprise-grade security built-in</div>
+                        <div class="comparison-item">✓ Native system integrations</div>
+                        <div class="comparison-item">✓ Automated workflows</div>
+                        <div class="comparison-item">✓ Continuous model optimization</div>
+                        <div class="comparison-item">✓ Compliance ready out-of-box</div>
+                        <div class="comparison-item highlight">Result: Deploy in weeks, proven ROI, lower risk</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: AGI Still Needs Customization -->
+        <div class="slide slide-9">
+            <h2>Even AGI Needs Enterprise Platforms</h2>
+            <div class="requirements-grid">
+                <div class="req-card">
+                    <div class="req-icon">👤</div>
+                    <div class="req-title">Consumer Use</div>
+                    <div class="req-desc">
+                        Personal use accepts margin of error. ChatGPT for writing emails? "Good enough" works fine.
+                    </div>
+                </div>
+                <div class="req-card">
+                    <div class="req-icon">🏥</div>
+                    <div class="req-title">Enterprise Deployment</div>
+                    <div class="req-desc">
+                        Operating room medical validation requires specialist-level accuracy. Financial compliance demands zero-error governance. Raw foundation models can't deliver this alone.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Venezuela Example -->
+        <div class="slide slide-10">
+            <h2>Why Foundation Models Alone Fail</h2>
+            <h3>Real-World Example: The Data Gap</h3>
+            <div class="example-container">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-time">January 3-4, 2026</div>
+                        <div class="timeline-event">U.S. military captures Venezuelan President Maduro</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">Hours Later (Jan 4, PM)</div>
+                        <div class="timeline-event">User asks ChatGPT about the operation</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">ChatGPT Response</div>
+                        <div class="timeline-event">"Conspiracy theory with no verifiable basis"</div>
+                    </div>
+                </div>
+                <div class="insight-box">
+                    <div class="insight-label">Why This Matters</div>
+                    <div class="insight-text">
+                        Foundation models can't update in real-time. Enterprise platforms handle context, validation, and integration—not just raw model access.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Infrastructure Pipeline -->
+        <div class="slide slide-11">
+            <span class="complexity-badge">⚡ WHAT DIY ACTUALLY REQUIRES</span>
+            <h2>The Infrastructure You'd Have to Build</h2>
+            <h3>Every Stage = Specialized Expertise + Massive Cost</h3>
+            <div class="infra-pipeline">
+                <div class="pipeline-stage">
+                    <div class="pipeline-number">1</div>
+                    <div class="pipeline-content">
+                        <div class="pipeline-title">Quality Data Infrastructure</div>
+                        <div class="pipeline-desc">Annotation, metadata, data quality pipelines</div>
+                    </div>
+                </div>
+                <div class="pipeline-stage">
+                    <div class="pipeline-number">2</div>
+                    <div class="pipeline-content">
+                        <div class="pipeline-title">Data Ingestion Plumbing</div>
+                        <div class="pipeline-desc">Real-time data flow, ETL, preprocessing systems</div>
+                    </div>
+                </div>
+                <div class="pipeline-stage">
+                    <div class="pipeline-number">3</div>
+                    <div class="pipeline-content">
+                        <div class="pipeline-title">Security & Compliance</div>
+                        <div class="pipeline-desc">Enterprise security, audit trails, compliance frameworks</div>
+                    </div>
+                </div>
+                <div class="pipeline-stage">
+                    <div class="pipeline-number">4</div>
+                    <div class="pipeline-content">
+                        <div class="pipeline-title">Model Validation & Testing</div>
+                        <div class="pipeline-desc">Engineering tests, user acceptance, behavioral analysis</div>
+                    </div>
+                </div>
+                <div class="pipeline-stage">
+                    <div class="pipeline-number">5</div>
+                    <div class="pipeline-content">
+                        <div class="pipeline-title">Computing Infrastructure</div>
+                        <div class="pipeline-desc">GPUs, data centers, massive electricity costs</div>
+                    </div>
+                </div>
+                <div class="pipeline-stage">
+                    <div class="pipeline-number">6</div>
+                    <div class="pipeline-content">
+                        <div class="pipeline-title">Continuous Optimization</div>
+                        <div class="pipeline-desc">Model tuning, performance optimization, cost management</div>
+                    </div>
+                </div>
+                <div class="pipeline-stage">
+                    <div class="pipeline-number">7</div>
+                    <div class="pipeline-content">
+                        <div class="pipeline-title">Integration Layer</div>
+                        <div class="pipeline-desc">Connect to existing systems, APIs, workflows—the hardest part</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Cost Breakdown -->
+        <div class="slide slide-12">
+            <span class="emphasis-banner">💰 COST REALITY CHECK</span>
+            <h2>True Cost of DIY Approach</h2>
+            <div class="cost-breakdown">
+                <div class="cost-row major">
+                    <div class="cost-item-label">Frontier Model Training</div>
+                    <div class="cost-item-value">$100M - $1B+</div>
+                </div>
+                <div class="cost-row major">
+                    <div class="cost-item-label">1GW Data Center</div>
+                    <div class="cost-item-value">~$50B</div>
+                </div>
+                <div class="cost-row">
+                    <div class="cost-item-label">Just the Chips</div>
+                    <div class="cost-item-value">$35B</div>
+                </div>
+                <div class="cost-row">
+                    <div class="cost-item-label">Custom Model + Integration</div>
+                    <div class="cost-item-value">$50K - $300K+</div>
+                </div>
+                <div class="cost-row major">
+                    <div class="cost-item-label">Security, Validation, Optimization</div>
+                    <div class="cost-item-value">All Separate</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: The Choice -->
+        <div class="slide slide-13">
+            <h2>The Real Strategic Choice</h2>
+            <div class="choice-container">
+                <div class="choice-option">
+                    <div class="choice-icon">❌</div>
+                    <div class="choice-title">DIY Foundation Model Connection</div>
+                    <div class="choice-desc">
+                        Connect to OpenAI/Anthropic APIs directly. Build all infrastructure, security, governance, integrations yourself.
+                    </div>
+                    <div class="choice-result">
+                        18-24 months, $millions investment, 95% failure rate, no proven governance
+                    </div>
+                </div>
+                <div class="vs-divider">VS</div>
+                <div class="choice-option">
+                    <div class="choice-icon">✅</div>
+                    <div class="choice-title">ServiceNow Platform</div>
+                    <div class="choice-desc">
+                        Proven platform with governance, security, integrations pre-built. Focus on business value, not infrastructure.
+                    </div>
+                    <div class="choice-result">
+                        Deploy in weeks, proven frameworks, lower total cost, enterprise-ready
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14: How Leaders Deploy -->
+        <div class="slide slide-14">
+            <span class="key-slide-indicator">🎯 CRITICAL INSIGHT</span>
+            <h2>How Smart Companies Actually Deploy</h2>
+            <h3>Platform First, Then Customize</h3>
+            <div class="platform-tiers">
+                <div class="tier-card">
+                    <span class="tier-label">Enterprise Platform Approach</span>
+                    <div class="tier-company">Most Companies</div>
+                    <div class="tier-approach">Use ServiceNow Platform</div>
+                    <div class="tier-details">
+                        Leverage pre-built AI workflows, governance frameworks, security controls. Customize for specific needs within proven platform. Deploy in weeks, not years.
+                    </div>
+                    <div class="tier-value">
+                        ServiceNow handles: Infrastructure, security, compliance, integrations, model updates, optimization
+                    </div>
+                </div>
+                <div class="tier-card">
+                    <span class="tier-label">Strategic Partnership</span>
+                    <div class="tier-company">Disney</div>
+                    <div class="tier-approach">$1B Investment: Equity Stake + Major Customer</div>
+                    <div class="tier-details">
+                        DisneyGPT for 225K employees, JARVIS for production automation, ChatGPT enterprise-wide deployment. $1B includes equity stake AND becoming major customer—deploying across organization with governance controls built in, not just raw API access.
+                    </div>
+                    <div class="tier-value">
+                        Even at $1B scale, platform deployment with proper governance over DIY infrastructure
+                    </div>
+                </div>
+                <div class="tier-card">
+                    <span class="tier-label">Deep Integration Partnership</span>
+                    <div class="tier-company">Accenture</div>
+                    <div class="tier-approach">30K Professionals on Claude Platform</div>
+                    <div class="tier-details">
+                        Not building from scratch—training 30,000 people to deploy Claude through proper platforms. Creating governance frameworks on top of Anthropic's platform, not replacing it.
+                    </div>
+                    <div class="tier-value">
+                        Investment in deployment expertise, not infrastructure building
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: ServiceNow Value Prop -->
+        <div class="slide slide-15">
+            <span class="servicenow-badge">💎 PLATFORM ADVANTAGE</span>
+            <h2>Why ServiceNow Beats DIY</h2>
+            <div class="value-props">
+                <div class="value-prop">
+                    <div class="value-title">Pre-Built Governance & Security</div>
+                    <div class="value-desc">
+                        Enterprise platforms come with proven governance frameworks, security controls, audit trails, and compliance certifications. DIY approach? You build this from scratch over 12-18 months.
+                    </div>
+                </div>
+                <div class="value-prop">
+                    <div class="value-title">Native System Integration</div>
+                    <div class="value-desc">
+                        Platforms integrate with your existing tech stack out-of-the-box. DIY? You're building custom connectors for every system, API, and data source—the most time-consuming part.
+                    </div>
+                </div>
+                <div class="value-prop">
+                    <div class="value-title">Continuous Model Optimization</div>
+                    <div class="value-desc">
+                        Platforms handle model updates, optimization, and performance tuning automatically. DIY? You need dedicated ML engineers managing this 24/7.
+                    </div>
+                </div>
+                <div class="value-prop">
+                    <div class="value-title">Proven Workflows & Best Practices</div>
+                    <div class="value-desc">
+                        Platforms provide battle-tested AI workflows for common enterprise use cases. DIY? You're experimenting with no proven playbook, high risk of failure.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 16: The Pattern -->
+        <div class="slide slide-16">
+            <h2>The Pattern Is Crystal Clear</h2>
+            <div class="pattern-reveal">
+                <div class="pattern-points">
+                    <div class="pattern-point">
+                        <div class="pattern-check">✓</div>
+                        <div class="pattern-text">No successful enterprise built complete AI infrastructure from scratch</div>
+                    </div>
+                    <div class="pattern-point">
+                        <div class="pattern-check">✓</div>
+                        <div class="pattern-text">All chose platforms or partnerships with proven governance</div>
+                    </div>
+                    <div class="pattern-point">
+                        <div class="pattern-check">✓</div>
+                        <div class="pattern-text">Even billion-dollar partnerships use platform approaches, not DIY infrastructure</div>
+                    </div>
+                </div>
+                <div class="pattern-conclusion">
+                    <p>Enterprise AI platforms like ServiceNow deliver faster time-to-value, lower total cost, and proven governance vs. DIY foundation model connections.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 17: The Irony -->
+        <div class="slide slide-17">
+            <h2>The Costly Irony of DIY</h2>
+            <div class="irony-container">
+                <div class="irony-side">
+                    <h3>What DIY Companies End Up Building:</h3>
+                    <div class="irony-list">
+                        <div class="irony-item">Custom data pipelines</div>
+                        <div class="irony-item">Security infrastructure</div>
+                        <div class="irony-item">Validation systems</div>
+                        <div class="irony-item">Governance frameworks</div>
+                        <div class="irony-item">Integration layers</div>
+                        <div class="irony-item">Optimization engines</div>
+                    </div>
+                </div>
+                <div class="arrow-divider">→</div>
+                <div class="irony-side">
+                    <h3>What ServiceNow Already Provides:</h3>
+                    <div class="irony-list">
+                        <div class="irony-item">✓ All infrastructure above</div>
+                        <div class="irony-item">✓ Battle-tested at scale</div>
+                        <div class="irony-item">✓ Continuous optimization</div>
+                        <div class="irony-item">✓ Ecosystem integrations</div>
+                        <div class="irony-item">✓ Proven governance</div>
+                        <div class="irony-item">✓ 10x lower total cost</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 18: The Real Question -->
+        <div class="slide slide-18">
+            <h2>The Real Question for Executives</h2>
+            <p class="question-not">Not "Can we connect directly to foundation models?"</p>
+            <p class="question-but">"Should we—<br>and at what cost?"</p>
+            <div class="cost-context">
+                <p>DIY approach: $50K-$300K+ just for custom models</p>
+                <p>Plus: Millions in GPU hours, infrastructure, security</p>
+                <p>Platform approach: Deploy proven solution in weeks</p>
+            </div>
+        </div>
+
+        <!-- Slide 19: Industry Convergence -->
+        <div class="slide slide-19">
+            <h2>Where the Industry Is Converging</h2>
+            <div class="direction-content">
+                <div class="direction-item">
+                    <div class="direction-icon">🏗️</div>
+                    <div class="direction-title">Platform-First Architecture</div>
+                    <div class="direction-desc">
+                        Industry adopting open standards (MCP) that work across platforms. Leading enterprise AI platforms like ServiceNow converging on interoperable ecosystems—not isolated DIY silos.
+                    </div>
+                </div>
+                <div class="direction-item">
+                    <div class="direction-icon">🤝</div>
+                    <div class="direction-title">Governed Deployment Model</div>
+                    <div class="direction-desc">
+                        Success comes from platforms with built-in governance, not DIY infrastructure. Whether ServiceNow for most companies or custom partnerships for giants like Disney—platform approach wins.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 20: Final Recommendation -->
+        <div class="slide slide-20">
+            <h2>Executive Recommendation</h2>
+            <div class="final-message">
+                <p>Choose enterprise AI platforms like ServiceNow over DIY foundation model connections.</p>
+                <p style="margin-top: 40px; font-size: 32px; opacity: 0.95;">
+                    Platform value isn't in model access—it's in governance, security, integration, and proven deployment frameworks.
+                </p>
+                <p style="margin-top: 40px; font-size: 32px; opacity: 0.95;">
+                    Focus resources on business value creation, not infrastructure replication.
+                </p>
+                <div class="final-cta">What's your organization's approach?</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Time Display -->
+    <div class="time-display">
+        <span id="timeElapsed">00:00</span> / <span id="timeTotal">15:22</span>
+    </div>
+
+    <!-- Slide Indicator -->
+    <div class="slide-indicator">Slide <span id="current">1</span> / 20</div>
+    
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progress"></div>
+    
+    <!-- Controls -->
+    <div class="controls">
+        <button class="control-btn" onclick="previousSlide()">← Previous</button>
+        <button class="control-btn" id="playBtn" onclick="togglePlay()">▶ Play</button>
+        <button class="control-btn" onclick="nextSlide()">Next →</button>
+        <button class="control-btn" onclick="resetPresentation()">↻ Reset</button>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="audio1" src="slide1.mp3"></audio>
+    <audio id="audio2" src="slide2.mp3"></audio>
+    <audio id="audio3" src="slide3.mp3"></audio>
+    <audio id="audio4" src="slide4.mp3"></audio>
+    <audio id="audio5" src="slide5.mp3"></audio>
+    <audio id="audio6" src="slide6.mp3"></audio>
+    <audio id="audio7" src="slide7.mp3"></audio>
+    <audio id="audio8" src="slide8.mp3"></audio>
+    <audio id="audio9" src="slide9.mp3"></audio>
+    <audio id="audio10" src="slide10.mp3"></audio>
+    <audio id="audio11" src="slide11.mp3"></audio>
+    <audio id="audio12" src="slide12.mp3"></audio>
+    <audio id="audio13" src="slide13.mp3"></audio>
+    <audio id="audio14" src="slide14.mp3"></audio>
+    <audio id="audio15" src="slide15.mp3"></audio>
+    <audio id="audio16" src="slide16.mp3"></audio>
+    <audio id="audio17" src="slide17.mp3"></audio>
+    <audio id="audio18" src="slide18.mp3"></audio>
+    <audio id="audio19" src="slide19.mp3"></audio>
+    <audio id="audio20" src="slide20.mp3"></audio>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let isPlaying = false;
+        let playTimeout;
+        let startTime;
+        
+        const slideDurations = [20000, 39000, 37000, 37000, 30000, 49000, 30000, 59000, 32000, 42000, 72000, 67000, 42000, 94000, 77000, 30000, 41000, 31000, 58000, 35000];
+        const totalDuration = slideDurations.reduce((a, b) => a + b, 0);
+        
+        const audioElements = Array.from({length: 20}, (_, i) => 
+            document.getElementById(`audio${i + 1}`)
+        );
+
+        document.getElementById('timeTotal').textContent = formatTime(totalDuration / 1000); // ~6:08
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        }
+
+        function updateTimer() {
+            if (isPlaying) {
+                const elapsed = slideDurations.slice(0, currentSlide).reduce((a, b) => a + b, 0);
+                const current = elapsed + (Date.now() - startTime);
+                document.getElementById('timeElapsed').textContent = formatTime(current / 1000);
+                requestAnimationFrame(updateTimer);
+            }
+        }
+
+        function stopAllAudio() {
+            audioElements.forEach(audio => {
+                if (audio) {
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
+            });
+        }
+
+        function showSlide(n) {
+            stopAllAudio();
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[n].classList.add('active');
+            currentSlide = n;
+            document.getElementById('current').textContent = n + 1;
+            document.getElementById('progress').style.width = ((n + 1) / totalSlides * 100) + '%';
+            
+            if (isPlaying && audioElements[n]) {
+                startTime = Date.now();
+                audioElements[n].play().catch(e => console.log('Audio play failed:', e));
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                showSlide(currentSlide + 1);
+            } else {
+                stopPlay();
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        function startPlay() {
+            isPlaying = true;
+            startTime = Date.now();
+            document.getElementById('playBtn').textContent = '⏸ Pause';
+            
+            if (audioElements[currentSlide]) {
+                audioElements[currentSlide].play().catch(e => console.log('Audio play failed:', e));
+            }
+            
+            updateTimer();
+            
+            function playNext() {
+                if (currentSlide < totalSlides - 1) {
+                    nextSlide();
+                    if (audioElements[currentSlide]) {
+                        startTime = Date.now();
+                        audioElements[currentSlide].play().catch(e => console.log('Audio play failed:', e));
+                    }
+                    playTimeout = setTimeout(playNext, slideDurations[currentSlide]);
+                } else {
+                    stopPlay();
+                }
+            }
+            
+            playTimeout = setTimeout(playNext, slideDurations[currentSlide]);
+        }
+
+        function stopPlay() {
+            isPlaying = false;
+            document.getElementById('playBtn').textContent = '▶ Play';
+            clearTimeout(playTimeout);
+            stopAllAudio();
+        }
+
+        function togglePlay() {
+            if (isPlaying) {
+                stopPlay();
+            } else {
+                startPlay();
+            }
+        }
+
+        function resetPresentation() {
+            stopPlay();
+            showSlide(0);
+            document.getElementById('timeElapsed').textContent = '00:00';
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousSlide();
+            } else if (e.key === 'p' || e.key === 'P') {
+                e.preventDefault();
+                togglePlay();
+            } else if (e.key === 'r' || e.key === 'R') {
+                resetPresentation();
+            } else if (e.key === 'f' || e.key === 'F') {
+                document.documentElement.requestFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>
